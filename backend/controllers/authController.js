@@ -72,11 +72,11 @@ export const googleCallback = async (req, res) => {
     console.log("✅ Tokens saved to database for:", email);
 
     // Redirect to frontend callback page
-    return res.redirect(`http://localhost:5173/auth/callback?email=${email}`);
+    return res.redirect(`https://gptbrandtracker.netlify.app/auth/callback?email=${email}`);
 
   } catch (error) {
     console.error("❌ Google Auth Error:", error);
-    return res.redirect("http://localhost:5173/?auth=failed");
+    return res.redirect("https://gptbrandtracker.netlify.app/?auth=failed");
   }
 };
 
