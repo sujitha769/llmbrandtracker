@@ -10,7 +10,8 @@ const Pricing = () => {
 
   // Load pricing plans
   useEffect(() => {
-    fetch("/api/pricing")
+  fetch(`${import.meta.env.VITE_BACKEND_URL}/api/pricing`)
+
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
