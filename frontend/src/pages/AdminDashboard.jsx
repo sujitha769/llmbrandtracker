@@ -85,7 +85,8 @@ const AdminDashboard = () => {
 
         // Redirect to main app
         alert(`Successfully logged in as ${userEmail}. You can return to admin panel anytime.`);
-        window.location.href = `${import.meta.env.VITE_BACKEND_URL}/dashboard`;
+       window.location.href = "/dashboard";
+
       } else {
         alert(data.message || 'Failed to login as user');
       }
