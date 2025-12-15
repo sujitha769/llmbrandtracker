@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Users, BarChart3, Settings, LogOut, Menu, X, DollarSign, Pencil, Save, Star } from "lucide-react";
+import { apiFetch } from "../utils/api";
 
 const AdminPricingManager = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -31,7 +32,7 @@ const AdminPricingManager = () => {
 
     // Load plans from backend
     setIsLoading(true);
-    fetch("/api/pricing")
+    apiFetch("/api/pricing")
       .then(res => res.json())
       .then(data => {
         if (data.success && data.plans && Array.isArray(data.plans) && data.plans.length > 0) {
@@ -69,11 +70,11 @@ const AdminPricingManager = () => {
     
     setPlans(updatedPlans);
     
-    fetch("/api/pricing", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ plans: updatedPlans })
-    })
+    apiFetch("/api/pricing", {
+  method: "POST",
+  body: JSON.stringify({ plans: updatedPlans })
+})
+
       .then(res => res.json())
       .then(data => {
         if (data.success) {
@@ -106,11 +107,11 @@ const AdminPricingManager = () => {
     }));
     setPlans(updatedPlans);
     
-    fetch("/api/pricing", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ plans: updatedPlans })
-    })
+    apiFetch("/api/pricing", {
+  method: "POST",
+  body: JSON.stringify({ plans: updatedPlans })
+})
+
       .then(res => res.json())
       .then(data => {
         if (data.success) {
